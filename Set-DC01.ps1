@@ -125,10 +125,10 @@ function Build-Server{
     Import-Module ActiveDirectory -WarningAction SilentlyContinue | Out-Null
 
     write-host("`n  [++] Installation du domaine: wodensec.local ")
-    Install-ADDSDomain -SkipPreChecks -ParentDomainName WODENSEC -NewDomainName local -NewDomainNetbiosName WODENSEC -InstallDns -SafeModeAdministratorPassword (Convertto-SecureString -AsPlainText "R00tR00t" -Force) -Force -WarningAction SilentlyContinue | Out-Null
+    Install-ADDSDomain -SkipPreChecks -ParentDomainName WODENSEC -NewDomainName local -NewDomainNetbiosName WODENSEC -InstallDns -SafeModeAdministratorPassword (Convertto-SecureString -AsPlainText "R00tR00tR00tR00t" -Force) -Force -WarningAction SilentlyContinue | Out-Null
 
     write-host("`n  [++] Déploiement de la forêt AD dans wodensec.local")
-    Install-ADDSForest -SkipPreChecks -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "WinThreshold" -DomainName "WODENSEC.local" -DomainNetbiosName "WODENSEC" -ForestMode "WinThreshold" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath "C:\Windows\SYSVOL" -Force:$true -SafeModeAdministratorPassword (Convertto-SecureString -AsPlainText "R00tR00t" -Force) -WarningAction SilentlyContinue | Out-Null
+    Install-ADDSForest -SkipPreChecks -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "WinThreshold" -DomainName "WODENSEC.local" -DomainNetbiosName "WODENSEC" -ForestMode "WinThreshold" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath "C:\Windows\SYSVOL" -Force:$true -SafeModeAdministratorPassword (Convertto-SecureString -AsPlainText "R00tR00tR00tR00t" -Force) -WarningAction SilentlyContinue | Out-Null
 
 }
 
