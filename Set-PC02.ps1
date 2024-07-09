@@ -8,7 +8,7 @@ function Invoke-PC02Setup {
         $NetAdapter=Get-CimInstance -Class Win32_NetworkAdapter -Property NetConnectionID,NetConnectionStatus | Where-Object { $_.NetConnectionStatus -eq 2 } | Select-Object -Property NetConnectionID -ExpandProperty NetConnectionID
         $IPAddress=Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias $NetAdapter | Select-Object -ExpandProperty IPAddress
         $IPByte = $IPAddress.Split(".")
-        $DNS = ($IPByte[0]+"."+$IPByte[1]+"."+$IPByte[2]+".250")
+        $DNS = ($IPByte[0]+"."+$IPByte[1]+"."+$IPByte[2]+".4")
         Set-DnsClientServerAddress -InterfaceAlias $NetAdapter -ServerAddresses ("$DNS","1.1.1.1")
         Disable-NetAdapterPowerManagement -Name "$NetAdapter"
         netsh interface ipv6 set dnsservers "$NetAdapter" dhcp
